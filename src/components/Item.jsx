@@ -1,10 +1,21 @@
-import { div } from "prelude-ls";
-import React from "react";
+import {div} from "prelude-ls";
+import React, {useState} from "react";
 
+function Item(props) {
 
-function Item (props) {
-    return ( 
-        <div><li>{props.text}</li></div>
+    const [done,
+        setDone] = useState(false);
+
+    function handleClick() {
+        setDone((preValue) => {
+            return !preValue;
+        })
+    }
+
+    return (
+        <div onClick={handleClick} style={{textDecoration: done && "line-through"}}>
+            <li>{props.text}</li>
+        </div>
     );
 }
 
