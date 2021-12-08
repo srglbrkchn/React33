@@ -23,7 +23,11 @@ function App() {
     }
 
     function deleteItem(id) {
-        console.log("Item number " + id + " Asked to be deleted...");
+        setItems((preValue) => {
+            return (preValue.filter((item, index) => {
+                return id !== index;
+            }));
+        })
     }
 
     return (
