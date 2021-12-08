@@ -3,17 +3,10 @@ import React, {useState} from "react";
 
 function Item(props) {
 
-    const [done,
-        setDone] = useState(false);
-
-    function handleClick() {
-        setDone((preValue) => {
-            return !preValue;
-        })
-    }
-
     return (
-        <div onClick={handleClick} style={{textDecoration: done && "line-through"}}>
+        <div onClick={() => {
+            props.deleteItem(props.id);
+        }}>
             <li>{props.text}</li>
         </div>
     );
